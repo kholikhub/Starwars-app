@@ -28,6 +28,20 @@ const Home = () => {
     }
   };
 
+  const handleSelect = (suggestion: string) => {
+    setSearch(suggestion);
+    setSuggestions([]); // Hide suggestions after selection
+    // Redirect or perform an action after selecting a suggestion
+    window.location.href = `/search?q=${suggestion}`; // Example redirection
+  };
+
+  const handleEnter = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && search) {
+      // Redirect or perform an action when Enter is pressed
+      window.location.href = `/search?q=${search}`; // Example redirection
+    }
+  };
+
   return (
     <div className="relative bg-gray-900 text-white">
       {/* Hero Section */}
@@ -49,6 +63,7 @@ const Home = () => {
             placeholder="Search films or characters..."
             value={search}
             onChange={(e) => handleSearch(e.target.value)}
+            onKeyDown={handleEnter}
             className="w-full p-3 rounded-md text-black"
           />
           {suggestions.length > 0 && (
@@ -57,7 +72,7 @@ const Home = () => {
                 <li
                   key={index}
                   className="p-2 hover:bg-gray-200 cursor-pointer"
-                  onClick={() => setSearch(suggestion)}
+                  onClick={() => handleSelect(suggestion)}
                 >
                   {suggestion}
                 </li>

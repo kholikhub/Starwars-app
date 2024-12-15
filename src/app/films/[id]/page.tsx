@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation"; // Untuk mendapatkan parameter id
-import { Film } from "../../../types/film";
+import { Film, Characters } from "../../../types/film";
 import { dummyFilms } from "../../lib/dummyData"; // Impor data dummy
 import Link from "next/link"; // Impor Link untuk navigasi antar halaman
 
@@ -37,14 +37,6 @@ const FilmDetailPage = () => {
         {error && <p className="text-red-500 text-center py-4">{error}</p>}
         {film ? (
           <div className="p-6">
-            {/* <div className="relative mb-6"> // when using image
-              <img
-                src={film.posterUrl} // Tambahkan gambar poster film
-                alt={film.title}
-                className="w-full h-64 object-cover rounded-lg shadow-md"
-              />
-              <h1 className="absolute bottom-4 left-4 text-3xl font-bold text-white bg-black bg-opacity-50 p-2 rounded-lg">{film.title}</h1>
-            </div> */}
             <div className="relative mb-6">
               <h1 className="flex items-center justify-center text-3xl font-bold text-white bg-black bg-opacity-60 p-2 rounded-lg">{film.title}</h1>
             </div>
@@ -66,7 +58,7 @@ const FilmDetailPage = () => {
                   {film.characters.map((character, index) => (
                     <Link
                       key={index}
-                      href={`/character/${character.name}`} // Gantilah dengan rute detail karakter sesuai dengan ID atau nama
+                      href={`/character/${character.name}`} // Gantilah dengan rute detail karakter menggunakan ID atau nama
                     >
                       <div className="w-64 bg-gray-300 bg-opacity-75 rounded-lg shadow-md p-4 cursor-pointer hover:bg-gray-200 transition-all">
                         <h4 className="font-semibold text-lg text-black">{character.name}</h4>

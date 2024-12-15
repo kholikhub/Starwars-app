@@ -1,6 +1,7 @@
 // lib/dummyData.ts
 
 import { Film } from "../../types/film";
+import { Character } from "../../types/character";
 
 export const dummyFilms: Film[] = [
   {
@@ -561,6 +562,436 @@ export const dummyFilms: Film[] = [
         height: "5'8\"",
         mass: "150 lbs",
         homeworld: "Earth",
+      },
+    ],
+  },
+];
+
+
+
+export const dummyCharacters: Character[] = [
+  {
+    name: "Neo",
+    gender: "Pria",
+    birthYear: "Unknown", // No specific birth year in the film
+    height: "6'1\"",
+    mass: "180 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "1",
+        title: "The Matrix",
+        releaseDate: "1999-03-31",
+        director: "The Wachowskis",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Trinity",
+    gender: "Wanita",
+    birthYear: "Unknown", // No specific birth year in the film
+    height: "5'8\"",
+    mass: "130 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "1",
+        title: "The Matrix",
+        releaseDate: "1999-03-31",
+        director: "The Wachowskis",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Morpheus",
+    gender: "Pria",
+    birthYear: "Unknown", // No specific birth year in the film
+    height: "6'0\"",
+    mass: "190 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "1",
+        title: "The Matrix",
+        releaseDate: "1999-03-31",
+        director: "The Wachowskis",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Dom Cobb",
+    gender: "Pria",
+    birthYear: "1980",
+    height: "5'10\"",
+    mass: "175 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "2",
+        title: "Inception",
+        releaseDate: "2010-07-16",
+        director: "Christopher Nolan",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Robert Fischer",
+    gender: "Pria",
+    birthYear: "1985",
+    height: "5'11\"",
+    mass: "185 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "2",
+        title: "Inception",
+        releaseDate: "2010-07-16",
+        director: "Christopher Nolan",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Ariadne",
+    gender: "Wanita",
+    birthYear: "1992",
+    height: "5'6\"",
+    mass: "120 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "2",
+        title: "Inception",
+        releaseDate: "2010-07-16",
+        director: "Christopher Nolan",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Cooper",
+    gender: "Pria",
+    birthYear: "1970",
+    height: "6'0\"",
+    mass: "185 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "3",
+        title: "Interstellar",
+        releaseDate: "2014-11-07",
+        director: "Christopher Nolan",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Dr. Amelia Brand",
+    gender: "Wanita",
+    birthYear: "1980",
+    height: "5'9\"",
+    mass: "140 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "3",
+        title: "Interstellar",
+        releaseDate: "2014-11-07",
+        director: "Christopher Nolan",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Dr. Mann",
+    gender: "Pria",
+    birthYear: "1968",
+    height: "5'11\"",
+    mass: "190 lbs",
+    homeworld: "Bumi",
+    films: [
+      {
+        id: "3",
+        title: "Interstellar",
+        releaseDate: "2014-11-07",
+        director: "Christopher Nolan",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Luke Skywalker",
+    gender: "Pria",
+    birthYear: "1975",
+    height: "5'9\"",
+    mass: "165 lbs",
+    homeworld: "Tatooine",
+    films: [
+      {
+        id: "4",
+        title: "Star Wars: A New Hope",
+        releaseDate: "1977-05-25",
+        director: "George Lucas",
+        episodeID: 4,
+      },
+    ],
+  },
+  {
+    name: "Princess Leia",
+    gender: "Wanita",
+    birthYear: "1976",
+    height: "5'1\"",
+    mass: "120 lbs",
+    homeworld: "Alderaan",
+    films: [
+      {
+        id: "4",
+        title: "Star Wars: A New Hope",
+        releaseDate: "1977-05-25",
+        director: "George Lucas",
+        episodeID: 4,
+      },
+    ],
+  },
+  {
+    name: "Han Solo",
+    gender: "Pria",
+    birthYear: "1972",
+    height: "6'1\"",
+    mass: "180 lbs",
+    homeworld: "Corellia",
+    films: [
+      {
+        id: "4",
+        title: "Star Wars: A New Hope",
+        releaseDate: "1977-05-25",
+        director: "George Lucas",
+        episodeID: 4,
+      },
+    ],
+  },
+  {
+    name: "Bruce Wayne",
+    gender: "Pria",
+    birthYear: "1982",
+    height: "6'2\"",
+    mass: "210 lbs",
+    homeworld: "Gotham City",
+    films: [
+      {
+        id: "5",
+        title: "The Dark Knight",
+        releaseDate: "2008-07-18",
+        director: "Christopher Nolan",
+        episodeID: 2,
+      },
+    ],
+  },
+  {
+    name: "Joker",
+    gender: "Pria",
+    birthYear: "1969",
+    height: "6'0\"",
+    mass: "180 lbs",
+    homeworld: "Gotham City",
+    films: [
+      {
+        id: "5",
+        title: "The Dark Knight",
+        releaseDate: "2008-07-18",
+        director: "Christopher Nolan",
+        episodeID: 2,
+      },
+    ],
+  },
+  {
+    name: "Rachel Dawes",
+    gender: "Wanita",
+    birthYear: "1983",
+    height: "5'7\"",
+    mass: "130 lbs",
+    homeworld: "Gotham City",
+    films: [
+      {
+        id: "5",
+        title: "The Dark Knight",
+        releaseDate: "2008-07-18",
+        director: "Christopher Nolan",
+        episodeID: 2,
+      },
+    ],
+  },
+  {
+    name: "Iron Man",
+    gender: "Pria",
+    birthYear: "1970",
+    height: "6'1\"",
+    mass: "225 lbs",
+    homeworld: "Earth",
+    films: [
+      {
+        id: "6",
+        title: "Iron Man",
+        releaseDate: "2008-05-02",
+        director: "Jon Favreau",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Captain America",
+    gender: "Pria",
+    birthYear: "1918",
+    height: "6'2\"",
+    mass: "240 lbs",
+    homeworld: "Earth",
+    films: [
+      {
+        id: "7",
+        title: "Captain America: The First Avenger",
+        releaseDate: "2011-07-22",
+        director: "Joe Johnston",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Black Widow",
+    gender: "Wanita",
+    birthYear: "1984",
+    height: "5'3\"",
+    mass: "130 lbs",
+    homeworld: "Earth",
+    films: [
+      {
+        id: "7",
+        title: "The Avengers",
+        releaseDate: "2012-05-04",
+        director: "Joss Whedon",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Frodo Baggins",
+    gender: "Pria",
+    birthYear: "2980",
+    height: "3'6\"",
+    mass: "80 lbs",
+    homeworld: "Shire",
+    films: [
+      {
+        id: "8",
+        title: "The Lord of the Rings: The Fellowship of the Ring",
+        releaseDate: "2001-12-19",
+        director: "Peter Jackson",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Aragorn",
+    gender: "Pria",
+    birthYear: "2965",
+    height: "6'6\"",
+    mass: "220 lbs",
+    homeworld: "Gondor",
+    films: [
+      {
+        id: "8",
+        title: "The Lord of the Rings: The Fellowship of the Ring",
+        releaseDate: "2001-12-19",
+        director: "Peter Jackson",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Gandalf",
+    gender: "Pria",
+    birthYear: "Unknown",
+    height: "5'10\"",
+    mass: "150 lbs",
+    homeworld: "Middle-Earth",
+    films: [
+      {
+        id: "8",
+        title: "The Lord of the Rings: The Fellowship of the Ring",
+        releaseDate: "2001-12-19",
+        director: "Peter Jackson",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Dr. Alan Grant",
+    gender: "Pria",
+    birthYear: "1965",
+    height: "6'1\"",
+    mass: "200 lbs",
+    homeworld: "Earth",
+    films: [
+      {
+        id: "9",
+        title: "Jurassic Park",
+        releaseDate: "1993-06-11",
+        director: "Steven Spielberg",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Dr. Ellie Sattler",
+    gender: "Wanita",
+    birthYear: "1970",
+    height: "5'6\"",
+    mass: "125 lbs",
+    homeworld: "Earth",
+    films: [
+      {
+        id: "9",
+        title: "Jurassic Park",
+        releaseDate: "1993-06-11",
+        director: "Steven Spielberg",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "John Hammond",
+    gender: "Pria",
+    birthYear: "1920",
+    height: "5'10\"",
+    mass: "185 lbs",
+    homeworld: "Earth",
+    films: [
+      {
+        id: "9",
+        title: "Jurassic Park",
+        releaseDate: "1993-06-11",
+        director: "Steven Spielberg",
+        episodeID: 1,
+      },
+    ],
+  },
+  {
+    name: "Simba",
+    gender: "Pria",
+    birthYear: "Unknown",
+    height: "4'6\"",
+    mass: "140 lbs",
+    homeworld: "Pride Rock",
+    films: [
+      {
+        id: "10",
+        title: "The Lion King",
+        releaseDate: "1994-06-24",
+        director: "Roger Allers, Rob Minkoff",
+        episodeID: 1,
       },
     ],
   },
