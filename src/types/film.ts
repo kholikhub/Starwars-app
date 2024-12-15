@@ -1,6 +1,6 @@
 // types.ts
 export interface Film {
-  id:  number;
+  id:  string;
   title: string;
   episodeID: number;
   releaseDate: string;

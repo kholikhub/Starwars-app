@@ -71,15 +71,15 @@ const Home = () => {
       <section className="p-6 md:p-12 bg-gray-800">
         <h2 className="text-2xl font-bold text-center" id="films">Why We Love Star Wars</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          <div className="bg-gray-700 p-4 rounded-md">
+          <div className="bg-gradient-to-r from-black via-gray-800 to-black p-6 rounded-lg shadow-xl">
             <h3 className="text-lg font-bold">Epic Stories</h3>
             <p className="mt-3 text-gray-300">From the Skywalker saga to standalone tales, Star Wars captivates with its storytelling.</p>
           </div>
-          <div className="bg-gray-700 p-4 rounded-md">
+          <div className="bg-gradient-to-r from-black via-gray-800 to-black p-6 rounded-lg shadow-xl">
             <h3 className="text-lg font-bold">Iconic Characters</h3>
             <p className="mt-3 text-gray-300">Luke, Leia, Darth Vader, and Yoda—unforgettable characters that define generations.</p>
           </div>
-          <div className="bg-gray-700 p-4 rounded-md">
+          <div className="bg-gradient-to-r from-black via-gray-800 to-black p-6 rounded-lg shadow-xl">
             <h3 className="text-lg font-bold">A Galaxy Far, Far Away</h3>
             <p className="mt-3 text-gray-300">Experience the thrill of starships, lightsabers, and intergalactic adventures.</p>
           </div>
