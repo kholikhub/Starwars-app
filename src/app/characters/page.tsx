@@ -1,5 +1,3 @@
-// src/app/characters/page.tsx
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -23,8 +21,8 @@ const CharacterPage = () => {
         // setCharacters(fetchedCharacter || []);
         const fetchedCharacter = dummyCharacters; // Using dummy data
         setCharacters(fetchedCharacter);
-      } catch (err) {
-        setError("Failed to fetch character data.");
+      } catch {
+        setError("Failed to fetch character data."); // Set error if fetching fails
       } finally {
         setLoading(false);
       }
@@ -73,11 +71,13 @@ const CharacterPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-700 via-indigo-900 to-black">
       <div className="w-full max-w-7xl p-8 bg-transparent rounded-lg shadow-lg flex flex-col">
         {loading && <p className="text-gray-300">Loading...</p>}
+        
+        {/* Show error message if there's an error */}
+        {error && <p className="text-red-500">{error}</p>}
+
         {characters.length > 0 ? (
           <div className="flex-grow text-center">
-            <h1 className="text-4xl font-bold text-white mb-4">
-              CHARACTER LIST
-            </h1>
+            <h1 className="text-4xl font-bold text-white mb-4">CHARACTER LIST</h1>
             {/* Grid layout for character cards */}
             <div className="grid gap-3 mt-6 mb-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {currentCharacters.map((character) => (
@@ -90,21 +90,11 @@ const CharacterPage = () => {
                       <h2 className="text-lg font-semibold text-white">
                         {character.name}
                       </h2>
-                      <p className="mt-2 text-xs text-gray-400">
-                        Gender: {character.gender}
-                      </p>
-                      <p className="mt-2 text-xs text-gray-400">
-                        Birth Year: {character.birthYear}
-                      </p>
-                      <p className="mt-2 text-xs text-gray-400">
-                        Height: {character.height}
-                      </p>
-                      <p className="mt-2 text-xs text-gray-400">
-                        Mass: {character.mass}
-                      </p>
-                      <p className="mt-2 mb-2 text-xs text-gray-400">
-                        Homeworld: {character.homeworld}
-                      </p>
+                      <p className="mt-2 text-xs text-gray-400">Gender: {character.gender}</p>
+                      <p className="mt-2 text-xs text-gray-400">Birth Year: {character.birthYear}</p>
+                      <p className="mt-2 text-xs text-gray-400">Height: {character.height}</p>
+                      <p className="mt-2 text-xs text-gray-400">Mass: {character.mass}</p>
+                      <p className="mt-2 mb-2 text-xs text-gray-400">Homeworld: {character.homeworld}</p>
                     </div>
                     <Link
                       href={`/characters/${character.name}`}

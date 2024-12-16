@@ -6,7 +6,6 @@ import { Film } from "../../types/film";
 import { dummyFilms } from "../lib/dummyData";
 import Link from "next/link"; // Import Link for navigation
 
-
 const FilmPage = () => {
   const [films, setFilms] = useState<Film[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -18,12 +17,12 @@ const FilmPage = () => {
   useEffect(() => {
     const fetchFilms = async () => {
       try {
-        // const fetchedFilms: [Film] = await fetchStarwarsData(); // using api
-        // setFilms(fetchedFilms|| []);
+        // const fetchedFilms: [Film] = await fetchStarwarsData(); // using API
+        // setFilms(fetchedFilms || []);
         const fetchedFilms = dummyFilms; // using dummy data
         setFilms(fetchedFilms);
-      } catch (err) {
-        setError("Failed to fetch film data.");
+      } catch {
+        setError("Failed to fetch film data."); // Set error if fetching fails
       } finally {
         setLoading(false);
       }
@@ -72,6 +71,10 @@ const FilmPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-700 via-indigo-900 to-black">
       <div className="w-full max-w-7xl p-8 bg-transparent rounded-lg shadow-lg flex flex-col">
         {loading && <p className="text-gray-300">Loading...</p>}
+        
+        {/* Show error message if there's an error */}
+        {error && <p className="text-red-500">{error}</p>}
+
         {films.length > 0 ? (
           <div className="flex-grow text-center">
             <h1 className="text-4xl font-bold text-white mb-6">FILM LIST</h1>
