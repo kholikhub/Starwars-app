@@ -4,7 +4,9 @@
 
 import { useState, useEffect } from "react";
 import { dummyCharacters } from "../lib/dummyData";
+import { fetchStarwarsData } from "../lib/api";
 import Link from "next/link"; // Import Link for navigation
+import { Character } from "@/types/character";
 
 const CharacterPage = () => {
   const [characters, setCharacters] = useState<any[]>([]);
@@ -17,8 +19,9 @@ const CharacterPage = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        // Using dummy data for now
-        const fetchedCharacter = dummyCharacters;
+        // const fetchedCharacter:[Character] = await fetchStarwarsData();
+        // setCharacters(fetchedCharacter || []);
+        const fetchedCharacter = dummyCharacters; // Using dummy data
         setCharacters(fetchedCharacter);
       } catch (err) {
         setError("Failed to fetch character data.");
@@ -28,6 +31,24 @@ const CharacterPage = () => {
     };
 
     fetchCharacters();
+  }, []);
+
+  // Adjust films per page based on screen width
+  useEffect(() => {
+    const updateCharactersPerPage = () => {
+      if (window.innerWidth <= 640) {
+        setCharactersPerPage(4); // Display 4 films on mobile
+      } else {
+        setCharactersPerPage(8); // Display 8 films on larger screens
+      }
+    };
+
+    updateCharactersPerPage();
+    window.addEventListener("resize", updateCharactersPerPage);
+
+    return () => {
+      window.removeEventListener("resize", updateCharactersPerPage);
+    };
   }, []);
 
   const totalPages = Math.ceil(characters.length / charactersPerPage);
@@ -55,7 +76,9 @@ const CharacterPage = () => {
         {error && <p className="text-red-500">{error}</p>}
         {characters.length > 0 ? (
           <div className="flex-grow text-center">
-            <h1 className="text-4xl font-bold text-white mb-4">CHARACTER LIST</h1>
+            <h1 className="text-4xl font-bold text-white mb-4">
+              CHARACTER LIST
+            </h1>
             {/* Grid layout for character cards */}
             <div className="grid gap-3 mt-6 mb-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {currentCharacters.map((character) => (
@@ -65,12 +88,24 @@ const CharacterPage = () => {
                 >
                   <div className="flex flex-col justify-between h-full">
                     <div className="mb-3">
-                      <h2 className="text-lg font-semibold text-white">{character.name}</h2>
-                      <p className="mt-2 text-xs text-gray-400">Gender: {character.gender}</p>
-                      <p className="mt-2 text-xs text-gray-400">Birth Year: {character.birthYear}</p>
-                      <p className="mt-2 text-xs text-gray-400">Height: {character.height}</p>
-                      <p className="mt-2 text-xs text-gray-400">Mass: {character.mass}</p>
-                      <p className="mt-2 mb-2 text-xs text-gray-400">Homeworld: {character.homeworld}</p>
+                      <h2 className="text-lg font-semibold text-white">
+                        {character.name}
+                      </h2>
+                      <p className="mt-2 text-xs text-gray-400">
+                        Gender: {character.gender}
+                      </p>
+                      <p className="mt-2 text-xs text-gray-400">
+                        Birth Year: {character.birthYear}
+                      </p>
+                      <p className="mt-2 text-xs text-gray-400">
+                        Height: {character.height}
+                      </p>
+                      <p className="mt-2 text-xs text-gray-400">
+                        Mass: {character.mass}
+                      </p>
+                      <p className="mt-2 mb-2 text-xs text-gray-400">
+                        Homeworld: {character.homeworld}
+                      </p>
                     </div>
                     <Link
                       href={`/characters/${character.name}`}

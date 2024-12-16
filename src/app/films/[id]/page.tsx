@@ -1,33 +1,39 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation"; // Untuk mendapatkan parameter id
-import { Film, Characters } from "../../../types/film";
-import { dummyFilms } from "../../lib/dummyData"; // Impor data dummy
-import Link from "next/link"; // Impor Link untuk navigasi antar halaman
+import { useParams } from "next/navigation";
+import { Film } from "../../../types/film";
+import { fetchStarwarsData } from "../../lib/api";
+import Link from "next/link";
+import { dummyFilms } from "@/app/lib/dummyData";
 
 const FilmDetailPage = () => {
-  const { id } = useParams(); // Mendapatkan parameter 'id' dari URL
+  const { id } = useParams();
 
   const [film, setFilm] = useState<Film | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const fetchFilm = async (id: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const allFilms = dummyFilms; // using dummy data
+      // const allFilms = await fetchStarwarsData(); // using api data
+      const filmData = allFilms.find((film: Film) => film.id === id); 
+      setFilm(filmData || null);
+    } catch (err) {
+      console.error("Error fetching film data:", err);
+      setError("Gagal mengambil data film.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    if (!id) return; // Jika id tidak ada, keluar lebih awal
-
-    const fetchFilm = () => {
-      try {
-        const filmData = dummyFilms.find((film) => film.id === id); // Mencari film berdasarkan id
-        setFilm(filmData || null); // Set film jika ditemukan
-      } catch (err) {
-        setError("Gagal mengambil data film.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFilm();
+    if (id) {
+      fetchFilm(id as string); // Pastikan id berupa string
+    }
   }, [id]);
 
   return (
@@ -37,35 +43,36 @@ const FilmDetailPage = () => {
         {error && <p className="text-red-500 text-center py-4">{error}</p>}
         {film ? (
           <div className="p-6">
-            <div className="relative mb-6">
-              <h1 className="flex items-center justify-center text-3xl font-bold text-white bg-black bg-opacity-60 p-2 rounded-lg">{film.title}</h1>
-            </div>
-            <div className="space-y-4">
-              <p className="text-lg text-gray-100">
-                <span className="font-semibold">Episode:</span> {film.episodeID}
-              </p>
-              <p className="text-lg text-gray-100">
-                <span className="font-semibold">Tanggal Rilis:</span> {film.releaseDate}
-              </p>
-              <p className="text-lg text-gray-100">
-                <span className="font-semibold">Sutradara:</span> {film.director}
-              </p>
+            <h1 className="text-3xl font-bold text-white">{film.title}</h1>
+            <p className="text-lg text-gray-100">Episode: {film.episodeID}</p>
+            <p className="text-lg text-gray-100">Rilis: {film.releaseDate}</p>
+            <p className="text-lg text-gray-100">Sutradara: {film.director}</p>
 
-              {/* Character Section with Title */}
-              <div className="mt-6">
-                <h3 className="text-xl font-semibold text-white mb-4">Character:</h3>
-                <div className="flex overflow-x-auto space-x-4">
-                  {film.characters.map((character, index) => (
-                    <Link
-                      key={index}
-                      href={`/character/${character.name}`} // Gantilah dengan rute detail karakter menggunakan ID atau nama
-                    >
-                      <div className="w-64 bg-gray-300 bg-opacity-75 rounded-lg shadow-md p-4 cursor-pointer hover:bg-gray-200 transition-all">
-                        <h4 className="font-semibold text-lg text-black">{character.name}</h4>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+            {/* Character List using api*/}
+            {/* <div className="mt-6">
+              <h3 className="text-xl font-semibold text-white mb-4">Characters:</h3>
+               <div className="flex overflow-x-auto space-x-4">
+                {film.characterConnection.characters.map((character, index) => (
+                  <Link key={index} href={`/character/${character.name}`}>
+                    <div className="w-64 bg-gray-300 rounded-lg shadow-md p-4 hover:bg-gray-200">
+                      <h4 className="font-semibold text-lg text-black">{character.name}</h4>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div> */}
+
+            {/* Character List using dummy data*/}
+            <div className="mt-6">
+              <h3 className="text-xl font-semibold text-white mb-4">Characters:</h3>
+               <div className="flex overflow-x-auto space-x-4">
+                {film.characters.map((character, index) => (
+                  <Link key={index} href={`/character/${character.name}`}>
+                    <div className="w-64 bg-gray-300 rounded-lg shadow-md p-4 hover:bg-gray-200">
+                      <h4 className="font-semibold text-lg text-black">{character.name}</h4>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

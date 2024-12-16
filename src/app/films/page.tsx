@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { fetchStarwarsData } from "../lib/api";
 import { Film } from "../../types/film";
 import { dummyFilms } from "../lib/dummyData";
+import Link from "next/link"; // Import Link for navigation
+
 
 const FilmPage = () => {
   const [films, setFilms] = useState<Film[]>([]);
@@ -16,8 +18,9 @@ const FilmPage = () => {
   useEffect(() => {
     const fetchFilms = async () => {
       try {
-        // Using dummy data for now
-        const fetchedFilms = dummyFilms;
+        // const fetchedFilms: [Film] = await fetchStarwarsData(); // using api
+        // setFilms(fetchedFilms|| []);
+        const fetchedFilms = dummyFilms; // using dummy data
         setFilms(fetchedFilms);
       } catch (err) {
         setError("Failed to fetch film data.");
@@ -87,12 +90,12 @@ const FilmPage = () => {
                       <p className="mt-2 text-xs text-gray-400">Director: {film.director}</p>
                       <p className="mt-2 mb-3 text-xs text-gray-400">Episode: {film.episodeID}</p>
                     </div>
-                    <a
+                    <Link
                       href={`/films/${film.id}`}
                       className="text-blue-400 text-xs hover:text-blue-500 font-semibold"
                     >
                       View Details
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ))}
