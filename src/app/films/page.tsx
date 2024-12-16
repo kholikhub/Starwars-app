@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { fetchStarwarsData } from "../lib/api";
+// import { fetchStarwarsData } from "../lib/api";
 import { Film } from "../../types/film";
 import { dummyFilms } from "../lib/dummyData";
 import Link from "next/link"; // Import Link for navigation

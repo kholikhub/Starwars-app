@@ -4,9 +4,9 @@
 
 import { useState, useEffect } from "react";
 import { dummyCharacters } from "../lib/dummyData";
-import { fetchStarwarsData } from "../lib/api";
+// import { fetchStarwarsData } from "../lib/api";
 import Link from "next/link"; // Import Link for navigation
-import { Character } from "@/types/character";
+// import { Character } from "@/types/character";
 
 const CharacterPage = () => {
   const [characters, setCharacters] = useState<any[]>([]);

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Film } from "../../../types/film";
-import { fetchStarwarsData } from "../../lib/api";
+// import { fetchStarwarsData } from "../../lib/api";
 import Link from "next/link";
 import { dummyFilms } from "@/app/lib/dummyData";
 

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Character } from "../../../types/character";  // Assuming Character type exists
 import { dummyCharacters } from "@/app/lib/dummyData";  // Correcting dummy data import
-import { fetchStarwarsData } from "../../lib/api";
+// import { fetchStarwarsData } from "../../lib/api";
 import Link from "next/link";
 
 const CharacterDetailPage = () => {
