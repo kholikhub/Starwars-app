@@ -72,7 +72,6 @@ const FilmPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-700 via-indigo-900 to-black">
       <div className="w-full max-w-7xl p-8 bg-transparent rounded-lg shadow-lg flex flex-col">
         {loading && <p className="text-gray-300">Loading...</p>}
-        {error && <p className="text-red-500">{error}</p>}
         {films.length > 0 ? (
           <div className="flex-grow text-center">
             <h1 className="text-4xl font-bold text-white mb-6">FILM LIST</h1>

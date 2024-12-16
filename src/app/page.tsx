@@ -11,30 +11,27 @@ const Home = () => {
   const [error, setError] = useState<string | null>(null); // For showing error if no match is found
   const [apiData, setApiData] = useState<Character[]>([]); // Correctly type API data as an array of Character objects
   const [apiFilms, setApiFilms] = useState<Film[]>([]); // Correctly type API films as an array of Film objects
-  const [useApi, setUseApi] = useState(true); // Toggle to control whether to use the API
 
-  // Fetch data from the API conditionally
+  // Fetch data from the API
   useEffect(() => {
-    if (useApi) {
-      const fetchData = async () => {
-        try {
-          // Uncomment below line if API is being used
-          // const data: Character[] = await fetchStarwarsData(); 
-          const data: Character[] = []; // Type the fetched data as an array of Character
-          setApiData(data); // Store the fetched character data
+    const fetchData = async () => {
+      try {
+        // Uncomment below line if API is being used
+        // const data: Character[] = await fetchStarwarsData(); 
+        const data: Character[] = []; // Type the fetched data as an array of Character
+        setApiData(data); // Store the fetched character data
 
-          // Fetch films if needed
-          // const filmsData: Film[] = await fetchFilmsData();
-          const filmsData: Film[] = []; // Type the fetched films data as an array of Film
-          setApiFilms(filmsData); // Store the fetched film data
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
+        // Fetch films if needed
+        // const filmsData: Film[] = await fetchFilmsData();
+        const filmsData: Film[] = []; // Type the fetched films data as an array of Film
+        setApiFilms(filmsData); // Store the fetched film data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-      fetchData();
-    }
-  }, [useApi]);
+    fetchData();
+  }, []);
 
   // Function to handle search input change
   const handleSearch = (query: string) => {
@@ -54,22 +51,18 @@ const Home = () => {
         )
         .map((film) => film.title);
 
-      // Then, filter the API data (only if we are using the API)
-      const filteredApiCharacters = useApi
-        ? apiData
-            .filter((character) =>
-              character.name.toLowerCase().includes(query.toLowerCase()) // Case-insensitive comparison
-            )
-            .map((character) => character.name)
-        : [];
+      // Then, filter the API data
+      const filteredApiCharacters = apiData
+        .filter((character) =>
+          character.name.toLowerCase().includes(query.toLowerCase()) // Case-insensitive comparison
+        )
+        .map((character) => character.name);
 
-      const filteredApiFilms = useApi
-        ? apiFilms
-            .filter((film) =>
-              film.title.toLowerCase().includes(query.toLowerCase()) // Case-insensitive comparison
-            )
-            .map((film) => film.title)
-        : [];
+      const filteredApiFilms = apiFilms
+        .filter((film) =>
+          film.title.toLowerCase().includes(query.toLowerCase()) // Case-insensitive comparison
+        )
+        .map((film) => film.title);
 
       // Combine all suggestions: characters, films, and API data
       const combinedSuggestions = [
@@ -115,17 +108,13 @@ const Home = () => {
 
       // If no match is found in the dummy data, check API data if needed
       if (!selectedCharacter && !selectedFilm) {
-        const apiCharacter = useApi
-          ? apiData.find(
-              (character) => character.name.toLowerCase() === search.toLowerCase()
-            )
-          : undefined;
+        const apiCharacter = apiData.find(
+          (character) => character.name.toLowerCase() === search.toLowerCase()
+        );
 
-        const apiFilm = useApi
-          ? apiFilms.find(
-              (film) => film.title.toLowerCase() === search.toLowerCase()
-            )
-          : undefined;
+        const apiFilm = apiFilms.find(
+          (film) => film.title.toLowerCase() === search.toLowerCase()
+        );
 
         // If API data has the match, redirect accordingly
         if (apiCharacter) {

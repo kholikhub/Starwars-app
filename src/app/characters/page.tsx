@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 import { dummyCharacters } from "../lib/dummyData";
 // import { fetchStarwarsData } from "../lib/api";
 import Link from "next/link"; // Import Link for navigation
-// import { Character } from "@/types/character";
+import { Character } from "@/types/character";
 
 const CharacterPage = () => {
-  const [characters, setCharacters] = useState<any[]>([]);
+  const [characters, setCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -73,7 +73,6 @@ const CharacterPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-700 via-indigo-900 to-black">
       <div className="w-full max-w-7xl p-8 bg-transparent rounded-lg shadow-lg flex flex-col">
         {loading && <p className="text-gray-300">Loading...</p>}
-        {error && <p className="text-red-500">{error}</p>}
         {characters.length > 0 ? (
           <div className="flex-grow text-center">
             <h1 className="text-4xl font-bold text-white mb-4">
