@@ -66,13 +66,17 @@ const FilmDetailPage = () => {
             <div className="mt-6">
               <h3 className="text-xl font-semibold text-white mb-4">Characters:</h3>
                <div className="flex overflow-x-auto space-x-4">
-                {film.characters.map((character, index) => (
-                  <Link key={index} href={`/character/${character.name}`}>
-                    <div className="w-64 bg-gray-300 rounded-lg shadow-md p-4 hover:bg-gray-200">
-                      <h4 className="font-semibold text-lg text-black">{character.name}</h4>
-                    </div>
-                  </Link>
-                ))}
+                {film.characters && film.characters.length > 0?(
+                  film.characters.map((character, index) => (
+                    <Link key={index} href={`/characters/${character.name}`}>
+                      <div className="w-64 bg-gray-300 rounded-lg shadow-md p-4 hover:bg-gray-200">
+                        <h4 className="font-semibold text-lg text-black">{character.name}</h4>
+                      </div>
+                    </Link>
+                  ))
+                ): (
+                  <p className="text-gray-500 text-center py-4">Character tidak ditemukan.</p>
+                )}
               </div>
             </div>
           </div>
